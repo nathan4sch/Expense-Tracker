@@ -3,16 +3,16 @@ import bg from './img/bg.png'
 import { MainLayout } from './styles/Layouts'
 import Orb from './Components/Orb/Orb'
 import Navigation from "./Components/Navigation/Navigation";
+import React, { useState } from "react";
 
 function App() {
+  const [active, setActive] = React.useState(1)
 
   return (
     <AppStyled bg={bg} className="App">
       <Orb />
       <MainLayout>
-        <Navigation/>
-
-
+        <Navigation active={active} setActive={setActive} />
       </MainLayout>
     </AppStyled>
   );
