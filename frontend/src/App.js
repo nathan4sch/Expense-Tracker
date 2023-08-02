@@ -8,14 +8,16 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Income from "./Components/Income/Income";
 import Expenses from "./Components/Expenses/Expenses";
 import Investments from "./Components/Investments/Investments";
-import { useGlobalContext } from "./context/globalContext";
+import { GlobalProvider, useGlobalContext } from "./context/globalContext";
 
 function App() {
   const [active, setActive] = useState(1)
 
   const global = useGlobalContext()
+  console.log(global);
 
   const displayData = () => {
+    
     switch(active) {
       case 1:
         return <Dashboard />
@@ -42,10 +44,12 @@ function App() {
       {orbMemo}
       <MainLayout>
         <Navigation active={active} setActive={setActive} />
+        <GlobalProvider>
         <main>
           {displayData()}
 
         </main>
+        </GlobalProvider>
       </MainLayout>
     </AppStyled>
   );
