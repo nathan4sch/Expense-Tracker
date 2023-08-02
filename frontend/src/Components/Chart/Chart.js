@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import {Chart as ChartJs, 
+import {
+    Chart as ChartJs,
     CategoryScale,
     LinearScale,
     PointElement,
@@ -10,11 +11,12 @@ import {Chart as ChartJs,
     ArcElement,
 } from 'chart.js'
 
-import {Line} from 'react-chartjs-2'
+import { Line } from 'react-chartjs-2'
 import styled from 'styled-components'
 import { useGlobalContext } from '../../context/globalContext'
 import { dateFormat } from '../../utils/dateFormat'
 
+//Register Chart.js components
 ChartJs.register(
     CategoryScale,
     LinearScale,
@@ -26,19 +28,24 @@ ChartJs.register(
     ArcElement,
 )
 
+/**
+ * Renders a chart depicting income and expense data
+ * @returns {JSX.Element} JSX representation of the chart.
+ */
 function Chart() {
-    const {incomes, expenses, getIncomes, getExpenses} = useGlobalContext()
+    const { incomes, expenses, getIncomes, getExpenses } = useGlobalContext()
 
-    //getIncomes()
+    //Fetch incomes and expenses data
     useEffect(() => {
         getIncomes()
         getExpenses()
-    
-      }, [])
 
+    }, [])
+
+    // Prepare data for line chart
     const data = {
-        labels: incomes.map((inc) =>{
-            const {date} = inc
+        labels: incomes.map((inc) => {
+            const { date } = inc
             return dateFormat(date)
         }),
         datasets: [
@@ -46,18 +53,18 @@ function Chart() {
                 label: 'Income',
                 data: [
                     ...incomes.map((income) => {
-                        const {amount} = income
+                        const { amount } = income
                         return amount
                     })
                 ],
                 backgroundColor: 'green',
-                tension: .2
+                tension: .2 //Smoothness of line
             },
             {
                 label: 'Expenses',
                 data: [
                     ...expenses.map((expense) => {
-                        const {amount} = expense
+                        const { amount } = expense
                         return amount
                     })
                 ],
@@ -75,6 +82,7 @@ function Chart() {
     )
 }
 
+// Styled container for the chart
 const ChartStyled = styled.div`
     background: #FCF6F9;
     border: 2px solid #FFFFFF;

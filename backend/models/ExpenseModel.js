@@ -1,5 +1,11 @@
+/**
+ * Defines the structure of an expense document in the database.
+ * Fields include title, amount, type, date, category, and description.
+ */
+
 const mongoose = require('mongoose');
 
+// Defining the Expense Schema
 const ExpenseSchema = new mongoose.Schema({
     title: {
         type: String,
@@ -33,6 +39,7 @@ const ExpenseSchema = new mongoose.Schema({
         trim: true,
         maxLength: 50
     },
-}, {timestamps: true})
+}, { timestamps: true })
 
+// Creating and exporting the Expense model based on the defined schema
 module.exports = mongoose.model('Expense', ExpenseSchema)

@@ -1,5 +1,10 @@
+/**
+ * This module contains a function to establish a connection to a MongoDB database using the 'mongoose' library
+ */
+
 const mongoose = require('mongoose');
 
+// Asynchronous function that will handle the database connection.
 const db = async () => {
     try {
         mongoose.set('strictQuery', false)
@@ -11,4 +16,4 @@ const db = async () => {
     }
 }
 
-module.exports = {db}
+module.exports = { db }
