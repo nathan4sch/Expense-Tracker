@@ -95,13 +95,13 @@ export const GlobalProvider = ({ children }) => {
         getInvestments()
     }
 
-    const totalInvestment = () => {
+    const totalInvestments = () => {
         let totalInvestments = 0;
         expenses.forEach((investment) => {
-            totalInvestment = totalIncome + investment.amount
+            totalInvestments = totalInvestments + investment.amount
         })
 
-        return totalIncome;
+        return totalInvestments;
     }
 
     const totalBalance = () => {
@@ -130,6 +130,11 @@ export const GlobalProvider = ({ children }) => {
             getExpenses,
             deleteExpense,
             totalExpenses,
+            investments,
+            addInvestment,
+            getInvestments,
+            deleteInvestment,
+            totalInvestments,
             totalBalance,
             transactionHistory,
             error,
