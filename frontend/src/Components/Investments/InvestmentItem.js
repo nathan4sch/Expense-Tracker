@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { dollar, calender, trash } from '../../utils/Icons';
+import { dollar, calender, trash, piggy, stocks, roth, circle, bond } from '../../utils/Icons';
 import Button from '../Button/Button';
 import { dateFormat } from '../../utils/dateFormat';
 
@@ -16,8 +16,16 @@ function InvestmentItem({
 
     const investmentCatIcon = () => {
         switch (category) {
-            case 'salary':
-                return ;
+            case 'Personal Savings':
+                return piggy;
+            case 'Roth IRA':
+                return roth;
+            case 'Stocks':
+                return stocks;
+            case 'Bonds':
+                return bond;
+            case 'other':
+                return circle;
             default:
                 return ''
         }

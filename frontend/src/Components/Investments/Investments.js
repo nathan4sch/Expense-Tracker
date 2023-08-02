@@ -11,6 +11,7 @@ function Investments() {
   useEffect(() => {
     getInvestments()
   }, [])
+
   return (
     <InvestmentsStyled>
       <InnerLayout>
@@ -18,7 +19,7 @@ function Investments() {
         <h2 className="total-investment">Total Investments and Savings: <span>${totalInvestments()}</span></h2>
         <div className="investment-content">
           <div className="form-container">
-            
+            <InvestmentForm></InvestmentForm>
           </div>
           <div className="investments">
             {investments.map((investment) => {
@@ -30,7 +31,7 @@ function Investments() {
                 date={date}
                 type={type}
                 category={category}
-                indicatorColor="var(--color-blue)"
+                indicatorColor='linear-gradient(180deg, #66A3FF 0%, #007BFF 100%);'
                 deleteItem={deleteInvestment}
               />
             })}
@@ -45,7 +46,7 @@ function Investments() {
 const InvestmentsStyled = styled.div`
 display: flex;
 overflow: auto;
-.total-income{
+.total-investment{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,13 +61,13 @@ overflow: auto;
     span{
         font-size: 2.5rem;
         font-weight: 800;
-        color: var(--color-green);
+        color: cornflowerblue
     }
 }
-.income-content{
+.investment-content{
     display: flex;
     gap: 2rem;
-    .incomes{
+    .investments{
         flex: 1;
     }
 }

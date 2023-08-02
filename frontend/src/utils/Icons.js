@@ -41,3 +41,7 @@ export const healthcare = <i className="fa-solid fa-user-nurse"></i>
 export const childcare = <i className="fa-solid fa-children"></i>
 export const gifts = <i className="fa-solid fa-gift"></i>
 export const circle = <i className="fa-solid fa-circle-dot"></i>
+
+//investments icons
+export const roth = <i className="fa-solid fa-money-bill-trend-up"></i>
+export const bond = <i className="fa-solid fa-landmark"></i>

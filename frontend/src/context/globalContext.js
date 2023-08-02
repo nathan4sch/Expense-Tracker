@@ -85,7 +85,7 @@ export const GlobalProvider = ({ children }) => {
 
     const getInvestments = async () => {
         const response = await axios.get(`${BASE_URL}get-investments`)
-        setExpenses(response.data)
+        setInvestments(response.data)
         console.log(response.data)
     }
 
@@ -96,7 +96,7 @@ export const GlobalProvider = ({ children }) => {
 
     const totalInvestments = () => {
         let totalInvestments = 0;
-        expenses.forEach((investment) => {
+        investments.forEach((investment) => {
             totalInvestments = totalInvestments + investment.amount
         })
 
@@ -109,7 +109,6 @@ export const GlobalProvider = ({ children }) => {
 
     const transactionHistory = () => {
         const history = [...incomes, ...expenses]
-        console.log(history);
         history.sort((a, b) => {
             return new Date(b.createdAt) - new Date(a.createdAt)
         })

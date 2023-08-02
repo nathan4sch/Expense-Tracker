@@ -19,7 +19,7 @@ function Orb( {active} ) {
     const getColorFromActive = () => {
         switch (active) {
             case 1:
-                return 'linear-gradient(180deg, #FFFF00 0%, #FFD700 100%);';
+                return 'linear-gradient(180deg, #CCCCCC 0%, #999999 100%);';
             case 2:
                 return 'linear-gradient(180deg, #90EE90 0%, #00FF00 100%);';
             case 3:
@@ -39,7 +39,7 @@ function Orb( {active} ) {
         margin-left: -37vh;
         margin-top: -37vh;
         background: ${getColorFromActive()};
-        filter: blur(400px);
+        filter: blur(350px);
         animation: ${moveOrb} 15s alternate linear infinite;
     `;
 

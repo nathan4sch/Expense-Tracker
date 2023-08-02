@@ -7,7 +7,7 @@ import { dollar } from '../../utils/Icons';
 import History from '../History/History';
 
 function Dashboard() {
-  const { totalExpenses, incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()
+  const { totalExpenses, incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses, totalInvestments } = useGlobalContext()
 
   useEffect(() => {
     getIncomes()
@@ -31,13 +31,19 @@ function Dashboard() {
               <div className="expense">
                 <h2>Total Expense</h2>
                 <p>
-                  {dollar} {totalExpenses()}
+                  {dollar} -{totalExpenses()}
                 </p>
               </div>
               <div className="balance">
                 <h2>Total Balance</h2>
                 <p>
                   {dollar} {totalBalance()}
+                </p>
+              </div>
+              <div className="investment">
+                <h2>Total Savings</h2>
+                <p>
+                  {dollar} {totalInvestments()}
                 </p>
               </div>
             </div>
@@ -85,7 +91,7 @@ const DashboardStyled = styled.div`
                 .income, .expense{
                     grid-column: span 2;
                 }
-                .income, .expense, .balance{
+                .income, .expense, .balance, .investment{
                     background: #FCF6F9;
                     border: 2px solid #FFFFFF;
                     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
@@ -96,15 +102,34 @@ const DashboardStyled = styled.div`
                         font-weight: 700;
                     }
                 }
-
-                .balance{
-                    grid-column: 2 / 4;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
+                .balance, .investment{
+                    grid-column: span 2;
+                }
+                .income{
                     p{
                         color: var(--color-green);
+                        opacity: 0.6;
+                        font-size: 4.5rem;
+                    }
+                }
+                .expense{
+                    p{
+                        color: red;
+                        opacity: 0.6;
+                        font-size: 4.5rem;
+                    }
+                }
+
+                .balance{
+                    p{
+                        color: var(--color-green);
+                        opacity: 0.6;
+                        font-size: 4.5rem;
+                    }
+                }
+                .investment{
+                  p{
+                        color: cornflowerblue;
                         opacity: 0.6;
                         font-size: 4.5rem;
                     }
