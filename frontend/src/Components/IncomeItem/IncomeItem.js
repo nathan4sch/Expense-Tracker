@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { bitcoin, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, yt } from '../../utils/Icons';
+import { house, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, transportation, healthcare, utilities, insurance, childcare, gifts, sideHustle } from '../../utils/Icons';
 import Button from '../Button/Button';
 import { dateFormat } from '../../utils/dateFormat';
 
@@ -20,18 +20,12 @@ function IncomeItem({
         switch (category) {
             case 'salary':
                 return money;
-            case 'freelancing':
-                return freelance
+            case 'side-hustle':
+                return sideHustle
             case 'investments':
                 return stocks;
-            case 'stocks':
-                return users;
-            case 'bitcoin':
-                return bitcoin;
-            case 'bank':
-                return card;
-            case 'youtube':
-                return yt;
+            case 'gift':
+                return gifts;
             case 'other':
                 return piggy;
             default:
@@ -41,20 +35,22 @@ function IncomeItem({
 
     const expenseCatIcon = () => {
         switch (category) {
-            case 'education':
-                return book;
+            case 'housing':
+                return house;
+            case 'transportation':
+                return transportation;
+            case 'utilities':
+                return utilities;
             case 'groceries':
                 return food;
-            case 'health':
-                return medical;
-            case 'subscriptions':
-                return tv;
-            case 'takeaways':
-                return takeaway;
-            case 'clothing':
-                return clothing;
-            case 'travelling':
-                return freelance;
+            case 'insurance':
+                return insurance;
+            case 'healthcare':
+                return healthcare;
+            case 'childcare':
+                return childcare;
+            case 'gifts':
+                return gifts;
             case 'other':
                 return circle;
             default:

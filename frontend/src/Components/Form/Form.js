@@ -74,12 +74,9 @@ function Form() {
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
                     <option value="" disabled >Select Option</option>
                     <option value="salary">Salary</option>
-                    <option value="freelancing">Freelancing</option>
+                    <option value="side-hustle">Side-hustles</option>
                     <option value="investments">Investments</option>
-                    <option value="stocks">Stocks</option>
-                    <option value="bitcoin">Bitcoin</option>
-                    <option value="bank">Bank Transfer</option>
-                    <option value="youtube">Youtube</option>
+                    <option value="gift">Gifts</option>
                     <option value="other">Other</option>
                 </select>
             </div>
