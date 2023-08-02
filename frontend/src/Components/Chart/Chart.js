@@ -35,8 +35,6 @@ function Chart() {
         getExpenses()
     
       }, [])
-    console.log(incomes);
-    console.log(expenses);
 
     const data = {
         labels: incomes.map((inc) =>{

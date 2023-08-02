@@ -27,7 +27,6 @@ export const GlobalProvider = ({ children }) => {
     const getIncomes = async () => {
         const response = await axios.get(`${BASE_URL}get-incomes`)
         setIncomes(response.data)
-        console.log(response.data);
     }
 
     const deleteIncome = async (id) => {
