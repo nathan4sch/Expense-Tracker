@@ -1,3 +1,9 @@
+/**
+ * Investment Form Component
+ * 
+ * Creates the logic for the investment form used to add an investment
+ */
+
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import DatePicker from 'react-datepicker'
@@ -8,23 +14,29 @@ import { plus } from '../../utils/Icons';
 
 
 function InvestmentForm() {
-    const {addInvestment, error, setError} = useGlobalContext()
+    // Access the global context and state variables
+    const { addInvestment, error, setError } = useGlobalContext()
     const [inputState, setInputState] = useState({
         amount: '',
         date: '',
         category: '',
     })
 
+    // Extract values from inputState
     const { amount, date, category } = inputState;
 
+    // Event handler for input changes
     const handleInput = name => e => {
-        setInputState({...inputState, [name]: e.target.value})
+        setInputState({ ...inputState, [name]: e.target.value })
         setError('')
     }
 
+    // Event handler for form submission
     const handleSubmit = e => {
         e.preventDefault()
         addInvestment(inputState)
+
+        // Clear the form inputs after submission
         setInputState({
             amount: '',
             date: '',
@@ -32,40 +44,43 @@ function InvestmentForm() {
         })
     }
 
+    // Render the InvestmentForm component
     return (
         <InvestmentFormStyled onSubmit={handleSubmit}>
             {error && <p className='error'>{error}</p>}
             <div className="input-control">
-                <input value={amount}  
-                    type="text" 
-                    name={'amount'} 
+                <input value={amount}
+                    type="text"
+                    name={'amount'}
                     placeholder={'Investment Amount'}
-                    onChange={handleInput('amount')} 
+                    onChange={handleInput('amount')}
                 />
             </div>
             <div className="input-control">
-                <DatePicker 
+                <DatePicker
                     id='date'
                     placeholderText='Enter A Date'
                     selected={date}
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => {
-                        setInputState({...inputState, date: date})
+                        setInputState({ ...inputState, date: date })
                     }}
                 />
             </div>
             <div className="selects input-control">
+                {/* Dropdown to select the investment category */}
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
                     <option value="" disabled >Select Option</option>
                     <option value="Personal Savings">Personal Savings</option>
                     <option value="Roth IRA">Roth IRA</option>
                     <option value="Stocks">Stocks</option>
-                    <option value="Bonds">Bonds</option>  
-                    <option value="other">Other</option>  
+                    <option value="Bonds">Bonds</option>
+                    <option value="other">Other</option>
                 </select>
             </div>
             <div className="submit-btn">
-                <Button 
+                {/* Button to submit the form */}
+                <Button
                     name={'Add Investment'}
                     icon={plus}
                     bPad={'.8rem 1.6rem'}
@@ -78,7 +93,7 @@ function InvestmentForm() {
     )
 }
 
-
+// Styled components for the InvestmentForm
 const InvestmentFormStyled = styled.form`
     display: flex;
     flex-direction: column;

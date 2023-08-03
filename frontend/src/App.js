@@ -17,24 +17,25 @@ function App() {
   console.log(global);
 
   const displayData = () => {
-    
-    switch(active) {
+
+    // Renders the correct page based on which page is selected
+    switch (active) {
       case 1:
         return <Dashboard />
       case 2:
-        return <Income/>
-      case 3: 
+        return <Income />
+      case 3:
         return <Expenses />
       case 4:
         return <Investments />
-      default: 
+      default:
         return <Dashboard />
-      
+
     }
   }
 
   const orbMemo = useMemo(() => {
-    return <Orb active = {active}/>
+    return <Orb active={active} />
   }, [active])
 
   return (
@@ -43,10 +44,10 @@ function App() {
       <MainLayout>
         <Navigation active={active} setActive={setActive} />
         <GlobalProvider>
-        <main>
-          {displayData()}
+          <main>
+            {displayData()}
 
-        </main>
+          </main>
         </GlobalProvider>
       </MainLayout>
     </AppStyled>

@@ -1,3 +1,11 @@
+/**
+ * Expense Component
+ * 
+ * This code represents a React component for the Expenses page
+ * It displays a list of expenses and a form to add new expenses
+ * The expenses are fetched and managed using the globalContext provided by the application.
+ */
+
 import React, { useEffect } from 'react'
 import { styled } from 'styled-components';
 import { InnerLayout } from '../../styles/Layouts';
@@ -6,13 +14,19 @@ import Form from '../Form/Form';
 import IncomeItem from '../IncomeItem/IncomeItem';
 import ExpenseForm from './ExpenseForm';
 
+/**
+ * Component representing the Expenses page.
+ * Displays a list of expenses and a form to add new expenses.
+ */
 function Expenses() {
+  // Destructure data used from globalContext
   const { addIncome, expenses, getExpenses, deleteExpense, totalExpenses } = useGlobalContext()
 
   useEffect(() => {
     getExpenses()
 
   }, [])
+
   return (
     <ExpenseStyled>
       <InnerLayout>
@@ -23,6 +37,7 @@ function Expenses() {
             <ExpenseForm />
           </div>
           <div className="incomes">
+            {/* Map through expenses and render IncomeItem for each expense */}
             {expenses.map((income) => {
               const { _id, title, amount, date, category, description, type } = income;
               return <IncomeItem

@@ -1,3 +1,9 @@
+/**
+ * Chart Component
+ * 
+ * Contains Chart() function to render and display income and expense data
+ */
+
 import React, { useEffect } from 'react'
 import {
     Chart as ChartJs,

@@ -1,3 +1,9 @@
+/**
+ * Income Component
+ * 
+ * Displays a list of income items and a form to add new incomes.
+ */
+
 import React, { useEffect } from 'react'
 import { styled } from 'styled-components';
 import { InnerLayout } from '../../styles/Layouts';
@@ -8,6 +14,7 @@ import IncomeItem from '../IncomeItem/IncomeItem';
 function Income() {
   const { addIncome, incomes, getIncomes, deleteIncome, totalIncome } = useGlobalContext()
 
+  // Fetching incomes data on component mount
   useEffect(() => {
     getIncomes()
 
@@ -60,6 +67,8 @@ const IncomeStyled = styled.div`
         margin: 1rem 0;
         font-size: 2rem;
         gap: .5rem;
+        
+        /* Styling for the total income amount */
         span{
             font-size: 2.5rem;
             font-weight: 800;

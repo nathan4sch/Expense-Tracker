@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 /**
  * A reusable button component
+ * 
  * @param {string} name - The text content of the button
  * @param {JSX.Element} icon - Icon to be displayed before the button text
  * @param {function} onClick - Event handler

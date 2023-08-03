@@ -1,3 +1,11 @@
+/**
+ * Expense Form Component
+ * 
+ * ExpenseForm component is a React component that allows users to add an expense.
+ * It provides a form with input fields for the expense title, amount, date, category, and description.
+ * When the user submits the form, the `addExpense` function from GlobalContext is called to add the expense data.
+ */
+
 import React, { useState } from 'react'
 import { styled } from 'styled-components';
 import DatePicker from 'react-datepicker'
@@ -6,9 +14,13 @@ import { useGlobalContext } from '../../context/globalContext';
 import Button from '../Button/Button';
 import { plus } from '../../utils/Icons';
 
-
+/**
+ * ExpenseForm component allows users to add an expense.
+ */
 function ExpenseForm() {
     const { addExpense, error, setError } = useGlobalContext()
+
+    // State for managing form input fields
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -19,12 +31,14 @@ function ExpenseForm() {
 
     const { title, amount, date, category, description } = inputState;
 
+    // Handler for updating input field values
     const handleInput = name => e => {
         setInputState({ ...inputState, [name]: e.target.value })
         setError('')
 
     }
 
+    // Handler for form submission
     const handleSubmit = e => {
         e.preventDefault()
         addExpense(inputState)
@@ -35,13 +49,16 @@ function ExpenseForm() {
             category: '',
             description: '',
         })
-
     }
 
-    //handling the states declared above
+    /** 
+     * Handling the states declared above and rendering the expense form
+     * It includes input fields for the expense title, amount, date, category, and description.
+     * When the form is submitted, the `handleSubmit` function will be called.
+     */
     return (
         <ExpenseFormStyled onSubmit={handleSubmit}>
-                {error && <p className='error'>{error}</p>}
+            {error && <p className='error'>{error}</p>}
             <div className="input-control">
                 <input
                     type="text"
@@ -71,6 +88,7 @@ function ExpenseForm() {
                 />
             </div>
             <div className="selects input-control">
+                { /*Selection options for category dropdown*/}
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
                     <option value="" disabled >Select Option</option>
                     <option value="housing">Housing</option>
@@ -81,7 +99,7 @@ function ExpenseForm() {
                     <option value="healthcare">Healthcare</option>
                     <option value="childcare">Childcare</option>
                     <option value="gifts">Gifts and Donations</option>
-                    <option value="other">Other</option>   
+                    <option value="other">Other</option>
                 </select>
             </div>
             <div className="input-control">

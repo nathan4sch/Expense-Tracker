@@ -1,6 +1,13 @@
+/**
+ * Income Item Component
+ * 
+ * Renders an item related to income or expenses
+ * Contains functionality to delete an item
+ */
+
 import React from 'react'
 import styled from 'styled-components'
-import { house, book, calender, card, circle, clothing, comment, dollar, food, freelance, medical, money, piggy, stocks, takeaway, trash, tv, users, transportation, healthcare, utilities, insurance, childcare, gifts, sideHustle } from '../../utils/Icons';
+import { house, calender, circle, comment, dollar, food, money, piggy, stocks, trash, transportation, healthcare, utilities, insurance, childcare, gifts, sideHustle } from '../../utils/Icons';
 import Button from '../Button/Button';
 import { dateFormat } from '../../utils/dateFormat';
 
@@ -16,6 +23,7 @@ function IncomeItem({
     type
 }) {
 
+    // Returns icons based on income category
     const categoryIcon = () => {
         switch (category) {
             case 'salary':
@@ -33,6 +41,7 @@ function IncomeItem({
         }
     }
 
+    // Returns icons based on expense category
     const expenseCatIcon = () => {
         switch (category) {
             case 'housing':
@@ -75,6 +84,8 @@ function IncomeItem({
                         </p>
                     </div>
                     <div className="btn-con">
+
+                    {/* Renders button outlined in button component*/}
                         <Button
                             icon={trash}
                             bPad={'1rem'}
@@ -136,6 +147,8 @@ const IncomeItemStyled = styled.div`
                 width: .8rem;
                 height: .8rem;
                 border-radius: 50%;
+                
+                {/* dynamic control over the background color of the component based on the value passed to it */}
                 background: ${props => props.indicator};
             }
         }

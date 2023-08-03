@@ -1,3 +1,11 @@
+/**
+ * Dashboard Component for main page of application
+ * 
+ * This component represents the main dashboard screen displaying all transactions and financial stats. It utilizes React and Styled Components for styling.
+ * The component includes a chart section showing income and expense trends, and a history section displaying the minimum and maximum income and expense values.
+ * It also calculates and displays the total income, total expenses, total balance, and total savings.
+ */
+
 import React, { useEffect } from 'react'
 import { styled } from 'styled-components';
 import { InnerLayout } from '../../styles/Layouts';
@@ -7,11 +15,13 @@ import { dollar } from '../../utils/Icons';
 import History from '../History/History';
 
 function Dashboard() {
-  const { totalExpenses, incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses, totalInvestments } = useGlobalContext()
+  const { totalExpenses, incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses, totalInvestments, getInvestments } = useGlobalContext()
 
+  // Fetch income and expense data
   useEffect(() => {
     getIncomes()
     getExpenses()
+    getInvestments()
   }, [])
 
   return (
@@ -20,8 +30,9 @@ function Dashboard() {
         <h1>All Transactions</h1>
         <div className="stats-con">
           <div className="chart-con">
-            <GlobalProvider><Chart /></GlobalProvider>
+            <GlobalProvider><Chart /></GlobalProvider> {/* Render the Chart component inside GlobalProvider*/}
             <div className="amount-con">
+              {/* Display total income, total expenses, total balance, and total savings by calling their respective functions from GlobalContext */}
               <div className="income">
                 <h2>Total Income</h2>
                 <p>
@@ -49,23 +60,23 @@ function Dashboard() {
             </div>
           </div>
           <div className="history-con">
-            <History />
+            <History /> {/* Render the History component */}
             <h2 className="salary-title">Min <span>Salary</span>Max</h2>
             <div className="salary-item">
               <p>
-                ${Math.min(...incomes.map(item => item.amount))}
+                ${Math.min(...incomes.map(item => item.amount))} {/* Calculate and display minimum income */}
               </p>
               <p>
-                ${Math.max(...incomes.map(item => item.amount))}
+                ${Math.max(...incomes.map(item => item.amount))} {/* Calculate and display maximum income */}
               </p>
             </div>
             <h2 className="salary-title">Min <span>Expense</span>Max</h2>
             <div className="salary-item">
               <p>
-                ${Math.min(...expenses.map(item => item.amount))}
+                ${Math.min(...expenses.map(item => item.amount))} {/* Calculate and display minimum expense */}
               </p>
               <p>
-                ${Math.max(...expenses.map(item => item.amount))}
+                ${Math.max(...expenses.map(item => item.amount))} {/* Calculate and display maximum expense */}
               </p>
             </div>
           </div>
@@ -77,10 +88,12 @@ function Dashboard() {
 
 const DashboardStyled = styled.div`
     .stats-con{
+        /* Creates grid layout of 5 columns */
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         gap: 2rem;
         .chart-con{
+            /* Have the chart be located in the first three columns of the grid */
             grid-column: 1 / 4;
             height: 400px;
             .amount-con{
@@ -105,6 +118,7 @@ const DashboardStyled = styled.div`
                 .balance, .investment{
                     grid-column: span 2;
                 }
+                /* Styles for income container text */
                 .income{
                     p{
                         color: var(--color-green);
@@ -112,6 +126,7 @@ const DashboardStyled = styled.div`
                         font-size: 4.5rem;
                     }
                 }
+                /* Styles for expense container text */
                 .expense{
                     p{
                         color: red;
@@ -119,7 +134,7 @@ const DashboardStyled = styled.div`
                         font-size: 4.5rem;
                     }
                 }
-
+                /* Styles for balance container text */
                 .balance{
                     p{
                         color: var(--color-green);
@@ -127,6 +142,7 @@ const DashboardStyled = styled.div`
                         font-size: 4.5rem;
                     }
                 }
+                /* Styles for investment container text */
                 .investment{
                   p{
                         color: cornflowerblue;
@@ -138,6 +154,8 @@ const DashboardStyled = styled.div`
         }
 
         .history-con{
+            /* The history container will be located from 
+            column four to the last remaining column */
             grid-column: 4 / -1;
             h2{
                 margin: 1rem 0;

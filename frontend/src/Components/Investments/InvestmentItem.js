@@ -1,3 +1,9 @@
+/**
+ * Investment Item Component
+ * 
+ * Creates the list of items seen on screen when the user creates an investment
+ */
+
 import React from 'react'
 import styled from 'styled-components'
 import { dollar, calender, trash, piggy, stocks, roth, circle, bond } from '../../utils/Icons';
@@ -14,6 +20,7 @@ function InvestmentItem({
     type
 }) {
 
+    // Returns icon based on category of the investment
     const investmentCatIcon = () => {
         switch (category) {
             case 'Personal Savings':
@@ -42,7 +49,7 @@ function InvestmentItem({
                     <div className="text">
                         <p>{dollar} {amount}</p>
                         <p>{calender} {dateFormat(date)}</p>
-                    
+
                     </div>
                     <div className="btn-con">
                         <Button

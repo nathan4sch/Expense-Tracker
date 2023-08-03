@@ -1,13 +1,21 @@
+/**
+ * Navigation Component
+ * 
+ * Renders a sidebar navigation menu with a user profile section and a sign-out button
+ * Lists clickable menu items to navigate between pages
+ */
+
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import avatar from '../../img/avatar.png'
 import { signout } from '../../utils/Icons'
 import { menuItems } from '../../utils/menuItems'
 
-function Navigation({active, setActive}) {
-    
+function Navigation({ active, setActive }) {
+
     return (
         <NavStyled>
+            {/* User profile section */}
             <div className="user-con">
                 <img src={avatar} alt="" />
                 <div className="text">
@@ -15,18 +23,22 @@ function Navigation({active, setActive}) {
                     <p>Your Money</p>
                 </div>
             </div>
+
+            {/* Sidebar menu items */}
             <ul className="menu-items">
                 {menuItems.map((item) => {
                     return <li
                         key={item.id}
                         onClick={() => setActive(item.id)}
-                        className={active === item.id ? 'active': ''}
+                        className={active === item.id ? 'active' : ''}
                     >
                         {item.icon}
                         <span>{item.title}</span>
                     </li>
                 })}
             </ul>
+
+            {/* Bottom navigation section with sign-out button */}
             <div className="bottom-nav">
                 <li>
                     {signout} Sign Out

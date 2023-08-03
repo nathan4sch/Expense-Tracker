@@ -1,3 +1,10 @@
+/**
+ * Investment Component
+ * 
+ * Displays a list of investments and savings
+ * Fetches initial data and renders an InvestmentForm and InvestmentItem components for each investment
+ */
+
 import React, { useEffect } from 'react'
 import { styled } from 'styled-components';
 import { InnerLayout } from '../../styles/Layouts';
@@ -8,6 +15,7 @@ import InvestmentItem from './InvestmentItem';
 function Investments() {
   const { addInvestment, investments, getInvestments, deleteInvestment, totalInvestments } = useGlobalContext()
 
+  // Updates the investments for the intial render
   useEffect(() => {
     getInvestments()
   }, [])
@@ -22,6 +30,7 @@ function Investments() {
             <InvestmentForm></InvestmentForm>
           </div>
           <div className="investments">
+            {/* Maps through each investment created and returns it*/}
             {investments.map((investment) => {
               const { _id, amount, date, category, type } = investment;
               return <InvestmentItem

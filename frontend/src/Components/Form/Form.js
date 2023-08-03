@@ -1,3 +1,11 @@
+/**
+ * Form Component
+ * 
+ * Renders a form to add income data
+ * Utilizes the useState and useGlobalContext hooks
+ * The form includes inputs for title, amount, date, category, and description
+ */
+
 import React, { useState } from 'react'
 import { styled } from 'styled-components';
 import DatePicker from 'react-datepicker'
@@ -9,6 +17,8 @@ import { plus } from '../../utils/Icons';
 
 function Form() {
     const { addIncome, getIncomes, error, setError } = useGlobalContext()
+
+    // State for storing form input values
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -19,12 +29,14 @@ function Form() {
 
     const { title, amount, date, category, description } = inputState;
 
+    // Handler for updating form input values
     const handleInput = name => e => {
         setInputState({ ...inputState, [name]: e.target.value })
         setError('')
 
     }
 
+    // Handler for form submission
     const handleSubmit = e => {
         e.preventDefault()
         addIncome(inputState)
@@ -38,10 +50,10 @@ function Form() {
 
     }
 
-    //handling the states declared above
+    // Handling the states declared above
     return (
         <FormStyled onSubmit={handleSubmit}>
-        {error && <p className='error'>{error}</p>}
+            {error && <p className='error'>{error}</p>}
             <div className="input-control">
                 <input
                     type="text"
