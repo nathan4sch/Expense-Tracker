@@ -145,7 +145,7 @@ const DashboardStyled = styled.div`
                 /* Styles for investment container text */
                 .investment{
                   p{
-                        color: cornflowerblue;
+                        color: dodgerblue;
                         opacity: 0.6;
                         font-size: 4.5rem;
                     }
