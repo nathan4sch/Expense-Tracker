@@ -7,7 +7,9 @@
 * Front-End: ReactJS to create a dynamic and interactive user interface
 
 ## Demo
-https://github.com/nathan4sch/Expense-Tracker/assets/112205153/0d63ff7f-a790-4902-82dd-c60dc43dcb1c
+https://github.com/nathan4sch/Expense-Tracker/assets/112205153/359f14e9-77df-4b36-a3f3-d744bb77e902
+
+
 
 
 After wanting to learn the React JS library and become more familiar with JavaScript, I set out to work on a project that would help me reach these goals. 
