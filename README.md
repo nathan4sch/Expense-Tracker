@@ -7,9 +7,6 @@
 * Front-End: ReactJS to create a dynamic and interactive user interface
 
 ## Demo
-https://github.com/nathan4sch/Expense-Tracker/assets/112205153/e3705313-3f52-4a54-b9ab-800592b3864a
-
-
 https://github.com/nathan4sch/Expense-Tracker/assets/112205153/0d63ff7f-a790-4902-82dd-c60dc43dcb1c
 
 
